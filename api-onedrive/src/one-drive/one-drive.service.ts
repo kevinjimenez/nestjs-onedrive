@@ -14,10 +14,10 @@ export class OneDriveService {
 
   async obtenerAccessToken() {
     const data = qs.stringify({
-      client_id: 'ae5bc1a0-e73e-413d-b913-1dadc3649ccc',
-      client_secret: 'VJTHVeQh0lnVKcOIo/Eb/ewz9k9VN_[5',
-      username: 'info5@29deoctubre.fin.ec',
-      password: 'Quito123',
+      client_id: '1ec0ff85-bb4a-473c-88a6-06f9c5838e75',
+      client_secret: 'qQG0lIA_c89cwVWw02UX-j~.z-53kndN0x',
+      username: 'rcargua@29deoctubre.fin.ec',
+      password: 'RCskc1996#1',
       grant_type: 'password',
       resource: 'https://graph.microsoft.com',
     });
@@ -32,18 +32,7 @@ export class OneDriveService {
           },
           data,
         })
-        .subscribe((respuesta: AxiosResponse) => {
-          console.log(respuesta.data.access_token);
-          // onedriveApi.items.createFolder({
-          //   accessToken: respuesta.data.access_token,
-          //   rootItemId: 'root',
-          //   name: 'testing-api',
-          // }).then((item) => {
-          //   console.log(item);
-          //   // returns body of https://dev.onedrive.com/items/create.htm#response
-          // }).catch(error => {
-          //   console.log(error);
-          // });
+        .subscribe((respuesta: AxiosResponse) => {                 
           onedriveApi.items.listChildren({
             accessToken: respuesta.data.access_token,
             itemId: 'root',
@@ -56,22 +45,7 @@ export class OneDriveService {
             // returns body of https://dev.onedrive.com/items/list.htm#response
           }).catch(error=>{
             console.log(error);
-          });
-          // this.enviarCorreo(
-          //   'orlando.kj24@gmail.com',
-          //   'kevin',
-          //   'hahahahah',
-          //   respuesta.data.access_token,
-          // ).subscribe(
-          //   (res) => {
-          //     console.log(res);
-          //   },
-          //   (error) => {
-          //     console.log('err');
-          //     console.log(Object.keys(error));
-          //     // console.log(error);
-          //   },
-          // );
+          });         
         });
     } catch (e) {
       console.log(e);
